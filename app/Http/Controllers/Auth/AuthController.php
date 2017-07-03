@@ -3,11 +3,12 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
-use Validator;
+
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
-
+use Tymon\JWTAuth\Exceptions\JWTException;
+use Tymon\JWTAuth\Facades\JWTAuth;
 class AuthController extends Controller
 {
     /*
@@ -31,6 +32,20 @@ class AuthController extends Controller
     public function __construct()
     {
         $this->middleware('guest', ['except' => 'getLogout']);
+    }
+
+    public function aunthenticate(Request $request)
+    {
+        $credentials = $request::only('email', 'password');
+        try{
+            if(! $token = JWTAuth::attempt($credentials)){
+                return $this->response->json(['error' => 'User credentials are not correct'], 401);
+            }
+
+        }  catch(JWTException $ex){
+            return $this->response->json(['error' => 'Somethign went wrong'], 500);
+        }
+        return $this->response->json(compact('token'));  
     }
 
     /**

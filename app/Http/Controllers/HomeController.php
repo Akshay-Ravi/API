@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Role;
 use App\User;
-use App\Permission;
+//use App\Permission;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -28,10 +28,10 @@ class HomeController extends Controller
         return $user;
     }
 
-    public function getUserRole($userId)
+    /*public function getUserRole($userId)
     {
         return User::find($userId)->roles;
-    }
+    }*/
 
     /**
     *Add permission to a role
@@ -39,7 +39,7 @@ class HomeController extends Controller
     *@return mixed
     */
 
-    public function attachPermission(Request $request)
+    /*public function attachPermission(Request $request)
     {
         $parameters = $request->only('permission', 'role');
         $permissionParam = $parameters['permission'];
@@ -49,7 +49,7 @@ class HomeController extends Controller
         $role->attachPermission($permission);
        // return $this->response->created();
         return $role->permissions;
-    }
+    }*/
     /**
      * Show the form for creating a new resource.
      *
