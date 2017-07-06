@@ -3,7 +3,8 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
-
+use Illuminate\Http\Request;
+use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
@@ -36,16 +37,16 @@ class AuthController extends Controller
 
     public function aunthenticate(Request $request)
     {
-        $credentials = $request::only('email', 'password');
+        $credentials = $request->only('email', 'password');
         try{
             if(! $token = JWTAuth::attempt($credentials)){
-                return $this->response->json(['error' => 'User credentials are not correct'], 401);
+                 return $this->response->error(['error' => 'User credentials are not correct'], 401);
             }
 
         }  catch(JWTException $ex){
-            return $this->response->json(['error' => 'Somethign went wrong'], 500);
+            return $this->response->error(['error' => 'Somethign went wrong'], 500);
         }
-        return $this->response->json(compact('token'));  
+        return $this->response->array(compact('token'))->setStatusCode(200);  
     }
 
     /**

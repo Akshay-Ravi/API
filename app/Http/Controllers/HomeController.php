@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Role;
 use App\User;
-//use App\Permission;
+use App\Permission;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -18,7 +18,9 @@ class HomeController extends Controller
      */
     public function index()
     {
+        //return "Hello";
         return User::get();  
+        //return Image::get();
     }
 
     public function attachUserRole($userId, $role){
@@ -28,9 +30,14 @@ class HomeController extends Controller
         return $user;
     }
 
-    /*public function getUserRole($userId)
+    public function getUserRole($userId)
     {
         return User::find($userId)->roles;
+    }
+
+    /*public function getItemImageInfo($imageId)
+    {
+
     }*/
 
     /**
@@ -47,8 +54,14 @@ class HomeController extends Controller
         $role = Role::where('name', $roleParam)->first();
         $permission = Permission::where('name', $permissionParam)->first();    
         $role->attachPermission($permission);
-       // return $this->response->created();
-        return $role->permissions;
+       return $this->response->created();
+       //return $role->permissions;
+    }*/
+
+    /*public function getPermissions($roleParam)
+    {
+        $role = Role::where('name', $roleParam)->first();
+        return $role->perms;   
     }*/
     /**
      * Show the form for creating a new resource.

@@ -11,14 +11,26 @@
 |
 */
 $api = app('Dingo\Api\Routing\Router');
+
 Route::get('/', function() {
     return view('welcome');
 });
 
+//This is an API call
+
 $api->version('v1', function($api){
-	$api->get('planer', 'App\Http\Controllers\HomeController@index');
-	$api->get('users/{user_id}/roles/{role_name}', 'App\Http\Controllers\HomeController@attachUserRole');
+
+	//$api->get('hello', 'App\Http\Contollers\HomeController@index');	
+	$api->get('hello','App\Http\Controllers\HomeController@index');
+
+	//$api->get('planer', 'App\Http\Controllers\HomeController@index');
+
+	$api->get('users/{user_id}/roles/{role_id}', 'App\Http\Controllers\HomeController@attachUserRole');
+
 	$api->get('users/{user_id}/roles', 'App\Http\Controllers\HomeController@getUserRole');
-	$api->post('role/permission/add', 'App\Http\Controllers\HomeController@attachPermission');
+
+	//$api->post('role/permission/add', 'App\Http\Controllers\HomeController@attachPermission');
+	//$api->get('role/permission/add', 'App\Http\Controllers\HomeController@getPermissions');
+
 	$api->post('authenticate', 'App\Http\Controllers\Auth\AuthController@authenticate');
 });

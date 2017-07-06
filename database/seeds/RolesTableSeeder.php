@@ -21,10 +21,10 @@ class RolesTableSeeder extends Seeder
         $owner->description = 'User is the owner of the given project';
         $owner->save();  
 
-        $owner = new Role();
+        /*$owner = new Role();
         $owner->name = 'client';
         $owner->display_name = 'Shopper';
         $owner->description = 'User is the client of the given project';
-        $owner->save();  
+        $owner->save(); */ 
     }
 }

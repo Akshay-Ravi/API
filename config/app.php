@@ -147,6 +147,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         Dingo\Api\Provider\LaravelServiceProvider::class,
+
         Zizaco\Entrust\EntrustServiceProvider::class,
 
         Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class
