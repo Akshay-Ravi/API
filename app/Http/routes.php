@@ -15,6 +15,7 @@ $api = app('Dingo\Api\Routing\Router');
 Route::get('/', function() {
     return view('welcome');
 });
+Route::resource('image', 'ImageController');
 
 //This is an API call
 
