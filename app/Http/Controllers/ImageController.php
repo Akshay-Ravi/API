@@ -18,7 +18,17 @@ class ImageController extends Controller
     {
         return Image::get();
     }
-
+    /*public function attachUserRole($userId, $role){
+        $user = User::find($userId);
+        $roleId = Role::where('name', $role)->first();
+        $user->roles()->attach($roleId);
+        return $user;
+    }*/
+    /* public function getImageLikeswithId($ImageId)
+    {
+		return Image::find($ImageID) 		    	
+    }*/
+     
     /**
      * Show the form for creating a new resource.
      *
