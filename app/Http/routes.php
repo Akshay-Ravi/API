@@ -19,7 +19,7 @@ Route::resource('image', 'ImageController');
 
 //This is an API call
 
-$api->version('v1', function($api){
+$api->version('v1', ['middleware' => 'api.auth'], function($api){
 
 	//$api->get('hello', 'App\Http\Contollers\HomeController@index');	
 	$api->get('hello','App\Http\Controllers\HomeController@index');

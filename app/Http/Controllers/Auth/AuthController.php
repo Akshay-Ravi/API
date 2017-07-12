@@ -46,7 +46,7 @@ class AuthController extends Controller
         }  catch(JWTException $ex){
             return $this->response->error(['error' => 'Somethign went wrong'], 500);
         }
-        return $this->response->array(compact('token'))->setStatusCode(200);  
+        return $this->response->array(compact('token'))->setStatusCode(2  00);  
     }
 
     /**
