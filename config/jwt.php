@@ -21,7 +21,7 @@ return [
     |
     */
 
-    'secret' => env('JWT_SECRET', '10d5kvtyVo0QBQhkaB14Iu0Yzn2NxMW1'),
+    'secret' => env('JWT_SECRET', 'fmQ9y3jRTYgOu9lClQ0ShtwKTCPtf0Mz'),
 
     /*
     |--------------------------------------------------------------------------
@@ -73,7 +73,7 @@ return [
     |
     */
 
-    'user' => 'App\User',
+    'image' => 'App\Image',
 
     /*
     |--------------------------------------------------------------------------
@@ -155,7 +155,9 @@ return [
         |
         */
 
-        'auth' => 'Tymon\JWTAuth\Providers\Auth\IlluminateAuthAdapter',
+        'auth' => function ($app) { 
+            return new Tymon\JWTAuth\Providers\Auth\IlluminateAuthAdapter($app['auth']);
+        },
 
         /*
         |--------------------------------------------------------------------------
@@ -166,7 +168,9 @@ return [
         |
         */
 
-        'storage' => 'Tymon\JWTAuth\Providers\Storage\IlluminateCacheAdapter',
+        'storage' => function ($app) {
+            return new Tymon\JWTAuth\Providers\Storage\IlluminateCacheAdapter($app['cache']);
+        },
 
     ],
 
