@@ -3,11 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Image;
+use App\Vendor;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-class ImageController extends Controller
+class VendorController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,24 +16,11 @@ class ImageController extends Controller
      */
     public function index(Request $request)
     {
-    	$id  = $request->input('id');
-    	$id2 = $request->input('id2');
-        return Image::whereBetween('id',[$id, $id2])
-        			->get();
+        $id1 = $request->input('id1');
+        $id2 = $request->input('id2');
+        return Vendor::whereBetween('vendor_id', [$id1,$id2])->get();
     }
 
-    // public function attachimageid(int )
-    /*public function attachUserRole($userId, $role){
-        $user = User::find($userId);
-        $roleId = Role::where('name', $role)->first();
-        $user->roles()->attach($roleId);
-        return $user;
-    }*/
-    /* public function getImageLikeswithId($ImageId)
-    {
-		return Image::find($ImageID) 		    	
-    }*/
-     
     /**
      * Show the form for creating a new resource.
      *
